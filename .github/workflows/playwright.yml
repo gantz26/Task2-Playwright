@@ -23,7 +23,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run tests
-        run: npx playwright test
+        run: npx playwright test --output=allure-results
 
   allure-report:
     runs-on: ubuntu-latest
