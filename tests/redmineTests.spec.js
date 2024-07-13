@@ -1,11 +1,11 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
-const { RegisterPage } = require('../pages/register.page.js');
-const { LoginPage } = require('../pages/login.page.js');
 const { faker } = require('@faker-js/faker');
 const { MailSlurp } = require('mailslurp-client');
-const helper = require('../helpers/helper.js');
+const { RegisterPage } = require('../pages/register.page.js');
+const { LoginPage } = require('../pages/login.page.js');
 const { AccountPage } = require('../pages/account.page.js');
+const helper = require('../helpers/helper.js');
 
 let randomFirstName;
 let randomLastName;
@@ -36,7 +36,6 @@ test.describe('Register page', () => {
         randomEmail = inbox.emailAddress;
         expect(randomEmail).toContain('@mailslurp.net');
 
-        console.log(`------------------------------------------${randomLogin}, ${randomPassword}, ${randomPassword}, ${randomFirstName}, ${randomLastName}, ${randomEmail}`);
         await registerPage.register(randomLogin, randomPassword, randomPassword, randomFirstName, randomLastName, randomEmail);
         await expect(await registerPage.getFlashNotice()).toHaveText(/Account was successfully created.*/);
 
@@ -49,7 +48,6 @@ test.describe('Register page', () => {
     test('register with an invalid password less than 8 symbols', async () => {
         const invalidPassword = faker.internet.password({ length: 4 });
         const email = faker.internet.email({ firstName: randomFirstName, lastName: randomLastName });
-        console.log(`------------------------------------------${randomLogin}, ${randomPassword}, ${randomPassword}, ${randomFirstName}, ${randomLastName}, ${email}`);
         await registerPage.register(randomLogin, invalidPassword, invalidPassword, randomFirstName, randomLastName, email);
         await expect(await registerPage.getErrorExplanation()).toHaveText(/Password is too short*/);
     })
@@ -68,7 +66,6 @@ test.describe('Login page', () => {
         randomEmail = inbox.emailAddress;
         expect(randomEmail).toContain('@mailslurp.net');
 
-        console.log(`------------------------------------------${randomLogin}, ${randomPassword}, ${randomPassword}, ${randomFirstName}, ${randomLastName}, ${randomEmail}, `);
         await registerPage.register(randomLogin, randomPassword, randomPassword, randomFirstName, randomLastName, randomEmail);
         const activateLink = await helper.getActivateLink(mailslurp, inbox);
         expect(activateLink).toContain('/activate?token');
