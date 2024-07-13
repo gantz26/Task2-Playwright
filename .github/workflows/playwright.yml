@@ -65,4 +65,4 @@ jobs:
           state: 'success'
           context: 'Test report'
           sha: ${{ github.sha }}
-          target_url: gantz26.github.io/Tast2-Playwright/${{ github.run_number }}
+          target_url: https://gantz26.github.io/Tast2-Playwright/${{ github.run_number }}
