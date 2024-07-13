@@ -44,10 +44,10 @@ jobs:
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          allure-results: allure-results
-          gh-pages: gh-pages
-          allure-report: allure-report
-          allure-history: allure-history
+          allure_results: allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
       
       - name: Deploy report
         if: always()
@@ -62,7 +62,7 @@ jobs:
         uses: Sibz/github-status-action@v1
         with:
           authToken: ${{ secrets.GITHUB_TOKEN }}
-          context: 'Test report'
           state: 'success'
+          context: 'Test report'
           sha: ${{ github.sha }}
-          targer_url: gantz26.github.io/Tast2-Playwright/${{ github.run_number }}
+          target_url: gantz26.github.io/Tast2-Playwright/${{ github.run_number }}
