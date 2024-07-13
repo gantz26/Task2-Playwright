@@ -17,7 +17,7 @@ let registerPage;
 let loginPage;
 let accountPage;
 
-const apiKey = '3e44c8b516c58eb06c236dcc6e05efb52666c3fb37b9ac5928e98bbd92641f52'; // insert your API Key here
+const apiKey = 'ddf422b2b77225c7a590d8af1cd66468837a815fe369e8a9ff5ed24638f26a44'; // insert your API Key here
 const mailslurp = new MailSlurp({ apiKey });
 
 test.describe('Register page', () => {
