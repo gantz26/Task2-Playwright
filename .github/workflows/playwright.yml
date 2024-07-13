@@ -66,3 +66,11 @@ jobs:
           context: 'Test report'
           sha: ${{ github.sha }}
           target_url: https://gantz26.github.io/Tast2-Playwright/${{ github.run_number }}
+
+      - name: Update About section
+        run: |
+          curl -X PATCH \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }} \
+          -d '{"homepage": "https://gantz26.github.io/Task2-Playwright/", "description": "Playwright Test Report"}'
