@@ -15,22 +15,21 @@ let randomEmail;
 
 let registerPage;
 let loginPage;
-let accountPage;
 
-const apiKey = 'b611d9383478ed778fa6ce8c6162d3ca6864ec10cded2baeaaf2263ffc590fac'; // insert your API Key here
+const apiKey = '1cf6e3ae2ef3eb421d1bcb4d0f8af616b81520d782561be7e0e1c9a99d09a007';
 const mailslurp = new MailSlurp({ apiKey });
 
-test.describe('Register page', () => {
-    test.beforeEach(async ({ page }) => {
-        registerPage = new RegisterPage(page);
-        await registerPage.openRegisterUrl();
+test.beforeAll(async ({ page }) => {
+    registerPage = new RegisterPage(page);
+    await registerPage.openRegisterUrl();
         
-        randomFirstName = faker.person.firstName();
-        randomLastName = faker.person.lastName();
-        randomLogin = faker.internet.userName( { firstName: randomFirstName, lastName: randomLastName });
-        randomPassword = faker.internet.password({ length: 8 });
-    });
+    randomFirstName = faker.person.firstName();
+    randomLastName = faker.person.lastName();
+    randomLogin = faker.internet.userName( { firstName: randomFirstName, lastName: randomLastName });
+    randomPassword = faker.internet.password({ length: 8 });
+});
 
+test.describe('Register page', () => {
     test('register with valid credentials', async ({ page }) => {
         const inbox = await mailslurp.createInbox();
         randomEmail = inbox.emailAddress;
@@ -55,13 +54,6 @@ test.describe('Register page', () => {
 
 test.describe('Login page', () => {
     test.beforeEach(async ({ page }) => {
-        registerPage = new RegisterPage(page);
-        await registerPage.openRegisterUrl();
-
-        randomFirstName = faker.person.firstName();
-        randomLastName = faker.person.lastName();
-        randomLogin = faker.internet.userName( { firstName: randomFirstName, lastName: randomLastName });
-        randomPassword = faker.internet.password({ length: 8 });
         const inbox = await mailslurp.createInbox();
         randomEmail = inbox.emailAddress;
         expect(randomEmail).toContain('@mailslurp.net');
@@ -92,7 +84,7 @@ test.describe('Login page', () => {
         await expect(await loginPage.getLoggedUser()).toHaveText(/Logged in as */);
         
         const newFirstName = faker.person.firstName();
-        accountPage = new AccountPage(page);
+        const accountPage = new AccountPage(page);
         await accountPage.openAccountPage();
         await accountPage.fillFirstName(newFirstName);
         await accountPage.clickSavebutton();
