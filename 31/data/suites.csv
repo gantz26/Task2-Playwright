@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Jul 14 14:17:29 GMT 2024","Sun Jul 14 14:17:37 GMT 2024","7126","chromium","redmineTests.spec.js","Register page","","","register with valid credentials",""
+"passed","Sun Jul 14 14:17:38 GMT 2024","Sun Jul 14 14:17:42 GMT 2024","4290","chromium","redmineTests.spec.js","Register page","","","register with an invalid password less than 8 symbols",""
+"passed","Sun Jul 14 14:17:50 GMT 2024","Sun Jul 14 14:17:59 GMT 2024","8394","chromium","redmineTests.spec.js","Login page","","","login with an invalid password",""
+"passed","Sun Jul 14 14:17:59 GMT 2024","Sun Jul 14 14:18:09 GMT 2024","10427","chromium","redmineTests.spec.js","Login page","","","change the first name on the my account page",""
+"passed","Sun Jul 14 14:17:42 GMT 2024","Sun Jul 14 14:17:50 GMT 2024","8086","chromium","redmineTests.spec.js","Login page","","","login with valid credentials",""
