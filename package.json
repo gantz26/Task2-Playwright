@@ -13,6 +13,6 @@
     "@types/node": "^20.14.10",
     "allure-commandline": "^2.29.0",
     "allure-playwright": "^3.0.0-beta.6",
-    "mailslurp-client": "^15.20.2"
+    "mailosaur": "^8.6.1"
   }
 }

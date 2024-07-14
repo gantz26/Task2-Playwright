@@ -1,7 +1,7 @@
-async function getActivateLink(mailslurp, inbox) {
-    const email = await mailslurp.waitForLatestEmail(inbox.id);
-    const linkResult = await mailslurp.emailController.getEmailLinks({ emailId: email.id });
-    return await linkResult.links[0];
+async function getActivateLink(mailosaur, serverId, emailAddress) {
+    const email = await mailosaur.messages.get(serverId, { sentTo: emailAddress });
+    const activateLink = email.html.links[0].href;
+    return activateLink;
 }
 
 module.exports = { getActivateLink };
